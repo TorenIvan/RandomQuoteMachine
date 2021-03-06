@@ -6,9 +6,9 @@ import './index.css';
 class NewQuoteButton extends React.Component{
     render(){
         return(
-            <div id="new-quote-button">
-
-            </div>
+            <button id="new-quote-button">
+                <p>New Quote</p>
+            </button>
         );
     }
 }
@@ -16,9 +16,9 @@ class NewQuoteButton extends React.Component{
 class TumblerButton extends React.Component{
     render(){
         return(
-            <div id="tumbler-button">
-
-            </div>
+            <button id="tumbler-button">
+                <a href="#" className="fa fa-tumblr"></a>
+            </button>
         );
     }
 }
@@ -26,9 +26,9 @@ class TumblerButton extends React.Component{
 class TwitterButton extends React.Component{
     render(){
         return(
-            <div id="twitter-button">
-
-            </div>
+            <button id="twitter-button">
+                <a href="#" className="fa fa-twitter"></a>
+            </button>
         );
     }
 }
@@ -36,14 +36,18 @@ class TwitterButton extends React.Component{
 class Quote extends React.Component{
     render(){
         return (
-            <div id="wrapper">
+            <>
                 <div id="quote">
-                    /* edo 8a grafei to quote */
+                    <p>
+                        ponaei
+                    </p>
                 </div>
-                <TwitterButton/>
-                <TumblerButton/>
-                <NewQuoteButton/>
-            </div>
+                <div className="buttons">
+                    <TwitterButton/>
+                    <TumblerButton/>
+                    <NewQuoteButton/>
+                </div>
+            </>
         );
     }
 }
@@ -63,18 +67,16 @@ class RQMachine extends React.Component{
 
     render(){
         return (
-            <body className="body">
-                <div className="wrapper">
-                    <Quote onClick={this.handleClick}/>
-                </div>
-            </body>
+            <div className="wrapper">
+                <Quote onClick={this.handleClick}/>
+            </div>
         );
     }
 }
 
 ReactDOM.render(
     <RQMachine />,
-    document.getElementById('html')
+    document.getElementById('root')
 );
 
 

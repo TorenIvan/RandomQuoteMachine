@@ -1,0 +1,87 @@
+*{  padding: 0;
+    margin: 0;
+}
+
+/* box alignment */
+html, ::before, ::after{
+    box-sizing: border-box;
+    background-color: rgb(31, 46, 51);
+}
+
+/* zero gap, whole page */
+html,body,#root{
+    margin: 0%;
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.wrapper{
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: cyan;
+    width: 35rem;
+    height: 18rem;
+    font-size: 2.3em;
+    /* below code to vertically position the element */
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: relative;
+    color: rgb(31, 46, 51);
+}
+
+#quote{
+    text-align: center;
+    position: relative;
+    top: 10%;
+}
+
+.buttons{
+    /* flexbox attributes */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* end of flexbox attributes */
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    height: 3rem;
+}
+
+/* Generic, for all */
+button{
+    background-color: rgb(31, 46, 51);
+    height: 80%;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+#twitter-button{
+    flex: 0 1 8%; 
+    margin-left: 12%;
+}
+
+#tumbler-button{
+    flex: 0 1 8%; 
+    margin: 2%;
+}
+
+#new-quote-button{
+    flex: 0 1 20%; 
+    margin-right: 10%;
+    margin-left: auto;
+} 
+
+/* Icons */
+.fa {
+    color: lightcyan;
+    text-align: center;
+    text-decoration: none;
+    font-size: 150%;
+  }
