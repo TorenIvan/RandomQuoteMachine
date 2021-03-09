@@ -6,7 +6,7 @@ import './index.css';
 class NewQuoteButton extends React.Component{
     render(){
         return(
-            <button id="new-quote-button">
+            <button id="new-quote">
                 <p>New Quote</p>
             </button>
         );
@@ -16,7 +16,7 @@ class NewQuoteButton extends React.Component{
 class TumblerButton extends React.Component{
     render(){
         return(
-            <button id="tumbler-button">
+            <button id="tumblr-quote">
                 <a href="#" className="fa fa-tumblr"></a>
             </button>
         );
@@ -26,37 +26,18 @@ class TumblerButton extends React.Component{
 class TwitterButton extends React.Component{
     render(){
         return(
-            <button id="twitter-button">
+            <button id="tweet-quote">
                 <a href="#" className="fa fa-twitter"></a>
             </button>
         );
     }
 }
 
-class Quote extends React.Component{
-    render(){
-        return (
-            <>
-                <div id="quote">
-                    <p>
-                        ponaei
-                    </p>
-                </div>
-                <div className="buttons">
-                    <TwitterButton/>
-                    <TumblerButton/>
-                    <NewQuoteButton/>
-                </div>
-            </>
-        );
-    }
-}
 
-class RQMachine extends React.Component{
+class QuoteBox extends React.Component{
     constructor(){
         super();
-        //edo diloneis to state
-        this.handleClick = this.handleClick.bind(this);     //bind handleClick to "this" class (also you can use arrow functions)
+        this.handleClick = this.handleClick.bind(this);     //bind handleClick to "this" class (you can also use arrow function)
     }
 
     handleClick(){
@@ -65,12 +46,30 @@ class RQMachine extends React.Component{
         .catch(error => console.log(error));
     }
 
+    /* function components, due to only render method */
     render(){
         return (
-            <div className="wrapper">
-                <Quote onClick={this.handleClick}/>
+            <div id="quote-box">
+                <blockquote id="quote">
+                    <span >
+                        /* function components, due tAEWFRAQEFAWGFEAFASo only render method aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+                        <em> -wwwwwwwwwwwwwwhsadgufiwaeheufihauweaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaarfnxquwehfquwhefuhweuwqhuyhaeugfa; </em>
+                    </span>
+                </blockquote>
+                <div className="buttons">
+                    <TwitterButton/>                            
+                    <TumblerButton/>
+                    <NewQuoteButton/>
+                </div>
             </div>
         );
+    }
+}
+
+// whole page component, no need but wth
+class RQMachine extends React.Component{
+    render(){
+        return <QuoteBox/>;
     }
 }
 
