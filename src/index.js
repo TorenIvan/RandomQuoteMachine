@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom'
 import './index.css';
 
 
-class NewQuoteButton extends React.Component{
-    render(){
-        return(
-            <button id="new-quote">
-                <p>New Quote</p>
-            </button>
-        );
-    }
+function NewQuoteButton(props){
+    return(
+        <button 
+            id="new-quote"
+            onClick={props.onClick}
+        >
+            <p>New Quote</p>
+        </button>
+    );
 }
 
 class TumblerButton extends React.Component{
@@ -37,13 +38,27 @@ class TwitterButton extends React.Component{
 class QuoteBox extends React.Component{
     constructor(){
         super();
+        this.state = {
+            author: '',
+            quote: '',
+        };
         this.handleClick = this.handleClick.bind(this);     //bind handleClick to "this" class (you can also use arrow function)
     }
 
+    //get a random quote and pass the method as prop to New Quote 
     handleClick(){
+        let randomQuote;
         fetch('https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json')
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
+        .then(response => response.json())
+        .then(data => {
+            randomQuote = data.quotes[Math.floor(Math.random() * data.quotes.length)];
+            this.setState({
+                author: randomQuote.author,
+                quote: randomQuote.quote,
+            });
+            console.log(randomQuote);
+        })
+        .catch(error => console.log(error))
     }
 
     /* function components, due to only render method */
@@ -52,14 +67,14 @@ class QuoteBox extends React.Component{
             <div id="quote-box">
                 <blockquote id="quote">
                     <span >
-                        /* function components, due tAEWFRAQEFAWGFEAFASo only render method aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
-                        <em> -wwwwwwwwwwwwwwhsadgufiwaeheufihauweaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaarfnxquwehfquwhefuhweuwqhuyhaeugfa; </em>
+                        {this.state.quote}
                     </span>
+                    <em> ~{this.state.author} </em>
                 </blockquote>
                 <div className="buttons">
                     <TwitterButton/>                            
                     <TumblerButton/>
-                    <NewQuoteButton/>
+                    <NewQuoteButton onClick={this.handleClick}/>
                 </div>
             </div>
         );
@@ -100,3 +115,8 @@ ReactDOM.render(
 /*On the above, what about when you want to call a method/function (with onClick{example}) but you want to pass parameters*/
 //Answer:   onClick(() => example(parameter))           //on functions or classes
 //          binding in constructor                      //on classes
+
+
+/* TO-DO's */
+//Buttons to tweet it
+//On first try quote something
