@@ -14,24 +14,20 @@ function NewQuoteButton(props){
     );
 }
 
-class TumblerButton extends React.Component{
-    render(){
+function TumblerButton(){
         return(
             <button id="tumblr-quote">
-                <a href="#" className="fa fa-tumblr"></a>
+                <a href='https://twitter.com/share'ref='share' data-url='https://twitter.com/'>Tweet</a>
             </button>
         );
-    }
 }
 
-class TwitterButton extends React.Component{
-    render(){
-        return(
-            <button id="tweet-quote">
-                <a href="#" className="fa fa-twitter"></a>
-            </button>
-        );
-    }
+function TwitterButton(){
+    return(
+        <button id="tumblr-quote">
+            <a href='https://twitter.com/intent/tweet' ref='share' data-url='https://twitter.com/'>Tweet</a>
+        </button>
+    );
 }
 
 
@@ -43,6 +39,7 @@ class QuoteBox extends React.Component{
             quote: '',
         };
         this.handleClick = this.handleClick.bind(this);     //bind handleClick to "this" class (you can also use arrow function)
+        this.handleClick();                                 //call the first time it loads first time load
     }
 
     //get a random quote and pass the method as prop to New Quote 
@@ -54,7 +51,7 @@ class QuoteBox extends React.Component{
             randomQuote = data.quotes[Math.floor(Math.random() * data.quotes.length)];
             this.setState({
                 author: randomQuote.author,
-                quote: randomQuote.quote,
+                quote:  randomQuote.quote,
             });
             console.log(randomQuote);
         })
