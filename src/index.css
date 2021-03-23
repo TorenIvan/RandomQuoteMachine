@@ -85,12 +85,7 @@ button{
     outline: none;
 }
 
-#tweet-quote{
-    flex: 0 1 8%; 
-    margin-left: 12%;
-}
-
-#tumblr-quote{
+#quote{
     flex: 0 1 8%; 
     margin: 2%;
 }

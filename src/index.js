@@ -23,7 +23,7 @@ function NewQuoteButton(props){
         <button 
             id = "new-quote"
             onClick = {props.onClick}
-            style = {{backgroundColor: props.value}}
+            style = {{backgroundColor: props.color}}
         >
             <p>New Quote</p>
         </button>
@@ -31,23 +31,31 @@ function NewQuoteButton(props){
 }
 
 function TumblerButton(props){
-        return(
-            <button 
-                id = "tumblr-quote"
-                style = {{backgroundColor: props.value}}    
-            >
-                {/* <a href='https://twitter.com/share'ref='share' data-url='https://twitter.com/'>Tweet</a> */}
-            </button>
-        );
+    let handleClick = (props) => {
+        window.open("https://twitter.com/intent/tweet?text="+props.quote+" By "+props.author);
+    }
+    return(
+        <button 
+            id = "quote"
+            onClick = {() => handleClick(props)}
+            style = {{backgroundColor: props.color}}    
+        >
+            <a class="fa fa-tumblr"></a>
+        </button>
+    );
 }
 
 function TwitterButton(props){
+    let handleClick = (props) => {
+        window.open("https://tumblr.com/intent/tweet?text="+props.quote+" By "+props.author);
+    }
     return(
         <button 
-            id = "tumblr-quote"
-            style = {{backgroundColor: props.value}}
+            id = "quote"
+            onClick = {() => handleClick(props)}
+            style = {{backgroundColor: props.color}}
         >
-            {/* <a href='https://twitter.com/intent/tweet' ref='share' data-url='https://twitter.com/'>Tweet</a> */}
+            <a class="fa fa-twitter"></a>
         </button>
     );
 }
@@ -58,8 +66,8 @@ class RQMachine extends React.Component{
         super();
         this.state = {
             author: '',
-            quote: '',
-            color: '',
+            quote:  '',
+            color:  '',
         };
         this.handleClick = this.handleClick.bind(this);     //bind handleClick to "this" class (you can also use arrow function)
         this.handleClick();                                 //call the first time it loads first time load
@@ -96,9 +104,9 @@ class RQMachine extends React.Component{
                         <em> ~{this.state.author} </em>
                     </blockquote>
                     <div className="buttons">
-                        <TwitterButton value={this.state.color}/>                            
-                        <TumblerButton value={this.state.color}/>
-                        <NewQuoteButton onClick={this.handleClick} value={this.state.color}/>
+                        <TwitterButton color={this.state.color} author={this.state.author} quote={this.state.quote}/>                            
+                        <TumblerButton color={this.state.color} author={this.state.author} quote={this.state.quote}/>
+                        <NewQuoteButton onClick={this.handleClick} color={this.state.color}/>
                     </div>
                 </div>
             </body>
